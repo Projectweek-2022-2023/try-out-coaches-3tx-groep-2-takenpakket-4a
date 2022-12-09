@@ -12,6 +12,8 @@
                 <a href="Controller?command=Overview">Overzicht</a></li>
             <li   ${param.actual eq 'Email Versturen'?"id = actual":""}>
                 <a  href="Controller?command=Emailpagina">Email Versturen</a></li>
+            <li class="nav-item"  ${param.actual eq 'Pdf'?"id = actual":""}>
+                <a class="nav-link"  href="Controller?command=Pdf">PDF</a></li>
           
         </ul>
     </nav>
