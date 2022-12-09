@@ -10,6 +10,8 @@
                 <a href="Controller?command=AddForm">Voeg Toe</a></li>
             <li ${param.actual eq 'Overzicht'?"id = actual":""}>
                 <a href="Controller?command=Overview">Overzicht</a></li>
+            <li   ${param.actual eq 'Email Versturen'?"id = actual":""}>
+                <a  href="Controller?command=Emailpagina">Email Versturen</a></li>
           
         </ul>
     </nav>
