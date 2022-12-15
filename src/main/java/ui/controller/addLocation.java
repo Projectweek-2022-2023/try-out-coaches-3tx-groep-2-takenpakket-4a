@@ -19,11 +19,11 @@ public class addLocation extends RequestHandler{
         if (errors.size() == 0) {
             service.addLocation(location);
             HttpSession session = request.getSession();
-            return "Controller?action=GPXoverview";
+            return "Controller?command=GPXoverview";
         }
         else {
             request.setAttribute("errors", errors);
-            return "Controller?action=GPXoverview";
+            return "Controller?command=GPXoverview";
         }
 
     }
