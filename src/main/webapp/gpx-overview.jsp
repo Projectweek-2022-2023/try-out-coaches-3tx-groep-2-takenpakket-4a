@@ -12,6 +12,12 @@
     <jsp:include page="head.jsp">
         <jsp:param name="title" value="GPX"/>
     </jsp:include>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="header.jsp">
@@ -21,20 +27,38 @@
     <main>
 <c:choose>
     <c:when test="${not empty gpxs}">
-<table>
-            <tr>
-                <th>GPX</th>
-                <th>Actions</th>
-            </tr>
-    <c:if test="$not empty gpxs"></c:if>
-            <c:forEach items="${gpxs}" var="gpx">
-                <tr>
-                    <p><a href="https://api.opencagedata.com/geocode/v1/json?q=${gpx.lat}+${gpx.lon}&key=03c48dae07364cabb7f121d8c1519492&no_annotations=1&language=en">${gpx.lat} ${gpx.lon}</a></p>
+
+        <script>
+            function initMap() {
+                const brussel = { lat: 50.8553897, lng: 4.3582507 };
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 8,
+                    center: brussel,
+                });
+
+                const locations = [
+
+                <c:forEach items="${gpxs}" var="gpx">
+                    { lat: ${gpx.lat}, lng: ${gpx.lon} },
+                </c:forEach>
+
+                ];
+
+                console.log(locations);
+
+                locations.forEach((position, i) => {
+                    const marker = new google.maps.Marker({
+                        position,
+                        map,
+                    });
+                });
+
+            }
+
+            window.initMap = initMap;
+        </script>
 
 
-                </tr>
-            </c:forEach>
-        </table>
     </c:when>
     <c:otherwise>
         <p>Er zijn geen gpx locaties </p>
@@ -56,6 +80,11 @@
 
         </form>
 
+        <div id="map"></div>
+        <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy0THRrjpJ9qPhGrTC6UG2cdRVAvKz6lU&callback=initMap"
+                defer
+        ></script>
     </main>
 </div>
 
