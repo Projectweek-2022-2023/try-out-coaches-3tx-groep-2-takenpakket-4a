@@ -24,7 +24,7 @@ public class Email extends RequestHandler {
         properties.put("mail.smtp.auth", "true");
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("groep2projectweek2@gmail.com", "bleluyenkxniiprl");
+                return new PasswordAuthentication("groep2projectweek2@gmail.com", "xaesxktphfqisnca");
             }
         });
         session.setDebug(true);

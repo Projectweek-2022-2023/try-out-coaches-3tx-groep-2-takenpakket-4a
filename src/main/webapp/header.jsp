@@ -16,6 +16,9 @@
                 <a class="nav-link"  href="Controller?command=Pdf">PDF</a></li>
             <li class="nav-item"  ${param.actual eq 'Images'?"id = actual":""}>
                 <a class="nav-link"  href="Controller?command=ImageOverview">Afbeeldingen</a></li>
+
+            <li class="nav-item"  ${param.actual eq 'GPX'?"id = actual":""}>
+                <a class="nav-link"  href="Controller?command=GPXoverview">GPX</a></li>
           
         </ul>
     </nav>
